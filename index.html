@@ -4,26 +4,22 @@
         <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<axios class="https://api.weatherapi.com/v1/current.json?key=dea92abfe67f482e8e683016241912&q=Lahore&aqi=yes"></axios>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
 <h1>Weather Application</h1>
-<form onsubmit="getweather()"return false>
-<label for="cityname">CITY NAME</label>
+<form onsubmit="getweather();return false;">
+<label for="cityname">city name: </label>
 <input type="text" name="cityname" id="city1" placeholder="Enter your city name" required>
-<button type="submit">Submit</button>
+<button type="submit">Click here</button>
 
 </form>
 <script>
-function getweather(){
-const pickCity_name=document.querySelector("#city1").value;
-alert( pickCity_name)
-}
-const axios = require('axios');
-
-// Make a request for a user with a given ID
-axios.get('/user?ID=12345')
+function getweather() {
+const pickCity_name = document.querySelector("#city1").value ;
+alert(pickCity_name)
+axios.get(`https://api.weatherapi.com/v1/current.json?key=63e268df154943bea0781636241912&q=${pickCity_name}&aqi=yes`)
 .then(function (response) {
 // handle success
 console.log(response);
@@ -32,11 +28,8 @@ console.log(response);
 // handle error
 console.log(error);
 })
-.finally(function () {
-// always executed
-});
-
-
+ 
+}
 </script>
 
 
