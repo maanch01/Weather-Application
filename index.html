@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <body>
-<h1>Weather Application</h1>
-<form onsubmit="getweather();return false;">
-<label for="cityname">city name: </label>
-<input type="text" name="cityname" id="city1" placeholder="Enter your city name" required>
-<button type="submit">Click here</button>
-
-</form>
+    <h1>Weather Application</h1>
+    <form onsubmit="getweather(); return false;">
+      <label for="cityname">City Name</label>
+      <input type="text" name="cityname" id="city1" placeholder="Enter your City Name">
+      <button type="submit">Click here</button>
+    </form>
 <script>
 function getweather() {
 const pickCity_name = document.querySelector("#city1").value ;
 alert(pickCity_name)
-axios.get(`https://api.weatherapi.com/v1/current.json?key=63e268df154943bea0781636241912&q=${pickCity_name}&aqi=yes`)
-.then(function (response) {
-// handle success
-console.log(response);
-})
-.catch(function (error) {
-// handle error
-console.log(error);
-})
- 
+axios.get(`https://api.weatherapi.com/v1/current.json?key=63e268df154943bea0781636241912&q=${pickCity_name}&naqi=yes`) 
+  .then(function (response) {
+  console.log(response);
+  console.log(response.data);
+  console.log(response.data.current);
+  const temp = response.data.current.temp_c;
+  document.write(`<h2>Today in ${pickCity_name}, the temperature is ${temp}°C</h2>`);
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+    document.write(`<h2>Failed to fetch weather for ${pickCity_name}. Please try again.</h2>`);
+  });
 }
 </script>
-
-
+         <footer><h4>7 March 2025</h4></footer>
 </body>
 </html>
